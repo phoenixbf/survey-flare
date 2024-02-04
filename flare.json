@@ -1,0 +1,9 @@
+{
+    "name": "Survey profile",
+
+    "client":{
+        "files": [
+            "ATON.flare.survey.js"
+        ]
+    }
+}
