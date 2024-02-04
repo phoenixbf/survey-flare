@@ -41,6 +41,8 @@ F.UI.registerProfile = ()=>{
     ATON.FE.uiAddProfile("survey", ()=>{
         $("#idTopToolbar").html(""); // clear
 
+        ATON.FE.uiAddButtonUser("idTopToolbar");
+
         F.UI.addButtonMeasure("idTopToolbar");
 
         ATON.FE.uiAddButtonVR("idTopToolbar");
@@ -55,6 +57,27 @@ F.setupEvents = ()=>{
             let M = ATON.SUI.addMeasurementPoint( P );
         }
     });
+
+    ATON.on("AllNodeRequestsCompleted",()=>{
+        F.setupScene();
+    });
+
+    ATON.on("TileLoaded", s =>{
+        F.setupScene(s);
+    });
+};
+
+F.sceneVisitor = (o)=>{
+    if ( o.material ){
+        o.material.clippingPlanes   = F.clipPlanes;
+        o.material.clipIntersection = true;
+        o.material.clipShadows      = true;
+    }
+};
+
+F.setupScene = (s)=>{
+    if (s) s.traverse( F.sceneVisitor );
+    else ATON.getRootScene().traverse( F.sceneVisitor );
 };
 
 
@@ -64,6 +87,12 @@ F.setup = ()=>{
     F.setupEvents();
 
     F.UI.registerProfile();
+
+    F.clipPlanes = [
+        //new THREE.Plane( new THREE.Vector3( 0, -1, 0 ), 2.0 )
+    ];
+
+    ATON._renderer.localClippingEnabled = true;
 
     F.log("Initialized");
 };
