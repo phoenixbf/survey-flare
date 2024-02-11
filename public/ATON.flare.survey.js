@@ -4,8 +4,6 @@
     author: bruno.fanini_AT_gmail.com
 
 ===========================================================*/
-window.addEventListener('load',() => {
-
 let F = new ATON.Flare();
 
 F._currOp = undefined;
@@ -89,7 +87,8 @@ F.setup = ()=>{
     F.UI.registerProfile();
 
     F.clipPlanes = [
-        //new THREE.Plane( new THREE.Vector3( 0, -1, 0 ), 2.0 )
+        //new THREE.Plane( new THREE.Vector3( 0, -1, 0 ), 2.0 ),
+        //new THREE.Plane( new THREE.Vector3( 1, 0, 0 ), 0.0 )
     ];
 
     ATON._renderer.localClippingEnabled = true;
@@ -107,4 +106,3 @@ F.update = ()=>{
 
 // Register
 F.register("Survey");
-});
