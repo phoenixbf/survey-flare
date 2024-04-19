@@ -1,6 +1,6 @@
 # Survey Add-on
 
-This flare (plugin) adds a UI Survey profile for specific operations.
+This flare (plugin) for ATON adds a UI Survey profile for specific operations. It is being developed under [H2IOSC project](https://www.h2iosc.cnr.it/) as part of task 6.3 (E-RIHS WebXR services).
 
 
 ## Getting started
